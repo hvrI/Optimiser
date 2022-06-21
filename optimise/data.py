@@ -121,5 +121,14 @@ powerReg = {
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" : (
         ("HiberbootEnabled", "Reg_DWORD", "0"),
-    )
+    ),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" : (
+        ("PowerThrottlingOff", "Reg_DWORD", "1"),
+    ),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c" : (
+        ("ValueMax", "Reg_DWORD", "64"),
+    ),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c\DefaultPowerSchemeValues\8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" : (
+        ("ValueMax", "Reg_DWORD", "64"),
+    ),
 }

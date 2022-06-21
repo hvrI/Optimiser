@@ -1,17 +1,25 @@
 from optimise import *
 from tkinter import *
 
-def gui():
-    return
-
-def main():
-    app = Tk()
-    op = Optimiser()
-    op.power_optimisation()
+class GUI(Frame):
+    def __init__(self, app):
+        Frame.__init__(self)
+        app.geometry("800x400")
+        self.op = Optimiser()
+        
+        
+        self.text = Text(self, state='disabled', height=6, width=40)
+        self.text.pack(side="left", fill="both", expand=True)
+        
+    def powerOptimisation(self):
+        return
     
-    return app
+    def memoryOptimisation(self):
+        return
+
 
 if __name__ == "__main__":
-    app = main()
-    
+    app = Tk(className="Optimiser | By hurl")
+    frame = GUI(app)
+    frame.pack(fill="both", expand=True)
     app.mainloop()
