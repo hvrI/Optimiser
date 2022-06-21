@@ -12,6 +12,7 @@ class Optimiser:
         if is_reg:
             command = command.split(' ')
             command[2] = command[2].replace('^', ' ')
+            command[4] = command[4].replace('^', ' ')
             return subprocess.run(command, stdout=subprocess.DEVNULL)
         return subprocess.run(command.split(' '), stdout=subprocess.DEVNULL)
     
@@ -19,6 +20,7 @@ class Optimiser:
         return subprocess.check_output(command.split(' ')).decode('utf-8')
     
     def add_reg(self, valueName: str, path: str, type: str, value: str):
+        valueName = valueName.replace(' ', '^')
         path = path.replace(' ', '^')
         return self.call_command(f"Reg add {path} /v {valueName} /t {type} /d {value} /f", True)
     
@@ -46,6 +48,9 @@ class Optimiser:
         return "Successfully added/activated Ultimate Performance Powerplan"
     
     def power_optimisation(self):
+        for path, values in powerReg.items():
+            for valueName, type, value in values:
+                self.add_reg(valueName, path, type, value)
         return
         
     def memory_optimisation(self):

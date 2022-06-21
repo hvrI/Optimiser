@@ -7,7 +7,7 @@ def gui():
 def main():
     app = Tk()
     op = Optimiser()
-    op.memory_optimisation()
+    op.power_optimisation()
     
     return app
 
