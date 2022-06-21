@@ -44,6 +44,9 @@ class Optimiser:
         ult_perf_id = ult_perf[ult_perf.index(': ') + 2 : ult_perf.index('  (')]
         self.call_command(f"powercfg /SETACTIVE {ult_perf_id}")
         return "Successfully added/activated Ultimate Performance Powerplan"
+    
+    def power_optimisation(self):
+        return
         
     def memory_optimisation(self):
         # Fsutil
@@ -51,7 +54,7 @@ class Optimiser:
             self.call_command(cmd)
         # Disable Memory Compression
         self.call_command('powershell -NoProfile -Command "Disable-MMAgent -mc"')
-
+        # Memory Optimisation through Registry
         for path, values in memReg.items():
             for valueName, type, value in values:
                 self.add_reg(valueName, path, type, value)
