@@ -26,13 +26,22 @@ memReg = {
     ),
     # Wait to kill non-responding app before and after shutdown
     r"HKCU\Control Panel\Desktop" : (
-        ("WaitToKillAppTimeout", "Reg_SZ", "1000"),
-        ("HungAppTimeout", "Reg_SZ", "1000")
+        ("WaitToKillAppTimeout", "Reg_SZ", "5000"),
+        ("HungAppTimeout", "Reg_SZ", "4000"),
+        ("AutoEndTasks", "Reg_SZ", "1"),
+        ("MenuShowDelay", "Reg_SZ", "0"),
+        ("WaitToKillServiceTimeout", "Reg_SZ", "1000"),
+        ("LowLevelHooksTimeout", "Reg_SZ", "1000"),
+        ("ForegroundLockTimeout", "Reg_SZ", "150000")
     ),
     # Disk Optimizations
     r"HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" : (
         ("DontVerifyRandomDrivers", "Reg_DWORD", "1"),
-        ("LongPathsEnabled", "Reg_DWORD", "0")
+        ("LongPathsEnabled", "Reg_DWORD", "0"),
+        ("NtfsMftZoneReservation", "Reg_DWORD", "1"),
+        ("NTFSDisable8dot3NameCreation", "Reg_DWORD", "1"),
+        ("NTFSDisableLastAccessUpdate", "Reg_DWORD", "1"),
+        ("ContigFileAllocSize", "Reg_DWORD", "40")
     ),
     # Disable background apps
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" : (
@@ -62,6 +71,10 @@ memReg = {
     # Unload .dll to free up memory
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" : (
         ("AlwaysUnloadDLL", "Reg_DWORD", "1"),
+        ("Max Cached Icons", "Reg_SZ", "2000")
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AlwaysUnloadDLL" : (
+        ("Default", "Reg_DWORD", "1"),
     ),
     # Free unused ram
     r"HKLM\System\CurrentControlSet\Control\Session Manager" : (
@@ -83,5 +96,8 @@ memReg = {
         ("NoRecentDocsHistory", "Reg_DWORD", "1"),
         ("NoLowDiskSpaceChecks", "Reg_DWORD", "1"),
         ("LinkResolveIgnoreLinkInfo", "Reg_DWORD", "1")
+    ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
+        ("EnableBalloonTips", "Reg_DWORD", "0"),
     ),
 }

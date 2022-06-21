@@ -22,6 +22,10 @@ class Optimiser:
         path = path.replace(' ', '^')
         return self.call_command(f"Reg add {path} /v {valueName} /t {type} /d {value} /f", True)
     
+    def del_reg(self, valueName: str, path: str):
+        path = path.replace(' ', '^')
+        return self.call_command(f"Reg delete {path} /v {valueName} /f", True)
+    
     def get_powerplans(self):
         return [powerplan for powerplan in self.get_output("powercfg /L").splitlines() if "Power Scheme GUID" in powerplan]
     
@@ -43,10 +47,10 @@ class Optimiser:
         
     def memory_optimisation(self):
         # Fsutil
-        #for cmd in fsutil_cmds:
-            #self.call_command(cmd)
+        for cmd in fsutil_cmds:
+            self.call_command(cmd)
         # Disable Memory Compression
-        #self.call_command('powershell -NoProfile -Command "Disable-MMAgent -mc"')
+        self.call_command('powershell -NoProfile -Command "Disable-MMAgent -mc"')
 
         for path, values in memReg.items():
             for valueName, type, value in values:
