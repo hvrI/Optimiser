@@ -52,21 +52,24 @@ class GUI(Frame):
     @deco
     def memoryOptimisation(self):
         results = self.op.memory_optimisation()
-        for path, valueName, value, rcode in results:
-            text = "Something went wrong.\n\n" if rcode else f"{path}\nAdded \"{valueName}\" - \"{value}\"\n\n"
-            self.text.insert("end", text)
+        for result in results:
+            if len(result) == 4:
+                text = "Something went wrong.\n\n" if result[3] else f"{result[0]}\nAdded \"{result[1]}\" - \"{result[2]}\"\n\n"
+                self.text.insert("end", text)
+            else:
+                text = "Something went wrong.\n\n" if result[1] else f"{result[0]}\n\n"
+                self.text.insert("end", text)
         return
     
     @deco
     def fullDebloating(self):
         results = self.op.debloat()
-        try:
-            for path, valueName, value, rcode in results:
-                text = "Something went wrong.\n\n" if rcode else f"{path}\nAdded \"{valueName}\" - \"{value}\"\n\n"
+        for result in results:
+            if len(result) == 4:
+                text = "Something went wrong.\n\n" if result[3] else f"{result[0]}\nAdded \"{result[1]}\" - \"{result[2]}\"\n\n"
                 self.text.insert("end", text)
-        except (ValueError, TypeError):
-            for path, rcode in results:
-                text = "Unable to find the specified registry key or value.\n\n" if rcode else f"Deleted \"{path}\"\n\n"
+            else:
+                text = "Unable to find the specified registry key or value.\n\n" if result[1] else f"Deleted \"{result[0]}\"\n\n"
                 self.text.insert("end", text)
 
 

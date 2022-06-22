@@ -58,9 +58,6 @@ class Optimiser:
         return
         
     def memory_optimisation(self):
-        # Fsutil
-        for cmd in fsutil_cmds:
-            self.call_command(cmd)
         # Disable Memory Compression
         self.call_command('powershell -NoProfile -Command "Disable-MMAgent -mc"')
         # Memory Optimisation through Registry
@@ -68,7 +65,10 @@ class Optimiser:
             for valueName, type, value in values:
                 rcode = self.add_reg(valueName, path, type, value).returncode
                 yield (path, valueName, value, rcode)
-                
+        for cmd, cmt in fsutil_cmds:
+            rcode = self.call_command(cmd).returncode
+            yield (cmt, rcode)
+
     def debloat(self):
         for path, values in debloatReg.items():
             for valueName, type, value in values:
