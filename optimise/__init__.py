@@ -1,3 +1,5 @@
+import os
+import shutil
 import contextlib
 import subprocess
 
@@ -7,6 +9,8 @@ class Optimiser:
     
     def __init__(self):
         self.ult_perf = "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61"
+        self.local = os.getenv("LOCALAPPDATA")
+        self.roaming = os.getenv("APPDATA")
     
     def call_command(self, command: str, is_reg: bool=False):
         if is_reg:
@@ -33,6 +37,21 @@ class Optimiser:
     
     def get_powerplans(self):
         return [powerplan for powerplan in self.get_output("powercfg /L").splitlines() if "Power Scheme GUID" in powerplan]
+
+    def delete_file(self, folder):
+        if not os.path.isdir(folder):
+            return
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception:
+                yield (file_path, 1)
+            else:
+                yield (file_path, 0)
     
     def powerplan(self):
         powerplans = self.get_powerplans()
@@ -77,3 +96,19 @@ class Optimiser:
         for path in delBloatReg:
             rcode = self.del_reg(path).returncode
             yield (path, rcode)
+
+    def cleaner(self):
+        for data, app in cachePaths.items():
+            if data == "local":
+                for name in app:
+                    for path in app[name]:
+                        folder = self.local + path
+                        for _path, rcode in self.delete_file(folder):
+                            yield (_path, rcode)
+            elif data == "roaming":
+                for name in app:
+                    for path in app[name]:
+                        folder = self.roaming + path
+                        for _path, rcode in self.delete_file(folder):
+                            yield (_path, rcode)
+

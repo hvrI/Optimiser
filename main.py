@@ -15,7 +15,8 @@ class GUI(Frame):
         self.button2 = Button(self, text="Power Optimisation", command=self.powerOptimisation)
         self.button3 = Button(self, text="Memory Optimisation", command=self.memoryOptimisation)
         self.button4 = Button(self, text="Debloat", command=self.fullDebloating)
-        self.button5 = Button(self, text="Clear Logs", command=self.clearText)
+        self.button5 = Button(self, text="Cleaner", command=self.fullCleaner)
+        self.button6 = Button(self, text="Clear Logs", command=self.clearText)
         
         self.vsb.pack(side="right", fill="y")
         self.text.pack(side="right", fill="both", expand=True)
@@ -24,6 +25,7 @@ class GUI(Frame):
         self.button3.pack()
         self.button4.pack()
         self.button5.pack()
+        self.button6.pack()
         
     def deco(func):
         def inner(self):
@@ -71,6 +73,12 @@ class GUI(Frame):
             else:
                 text = "Unable to find the specified registry key or value.\n\n" if result[1] else f"Deleted \"{result[0]}\"\n\n"
                 self.text.insert("end", text)
+
+    @deco
+    def fullCleaner(self):
+        for result in self.op.cleaner():
+            text = f"Unable to delete {result[0]}\n\n" if result[1] else f"Deleted {result[0]}\n\n"
+            self.text.insert("end", text)
 
 
 if __name__ == "__main__":

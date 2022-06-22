@@ -406,3 +406,36 @@ delBloatReg = (
     r"HKEY_CLASSES_ROOT\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy",
     r"HKEY_CLASSES_ROOT\HKCR:\Extensions\ContractId\Windows.ShareTarget\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
 )
+
+cachePaths = {
+        "local": {
+            "Spotify": [
+                "\\Spotify\\Data",
+                "\\Spotify\\Browser\\Cache\\Cache_Data"
+            ],
+            "Packages Cache": [
+                "\\Package Cache"
+            ],
+            "Temp": [
+                "\\Temp"
+            ],
+            "D3DSCache": [
+                "\\D3DSCache"
+            ]
+        },
+        "roaming": {
+            "Discord": [
+                "\\discord\\blob_storage",
+                "\\discord\\Cache",
+                "\\discord\\GPUCache"
+            ],
+            "Nvidia": [
+                "\\NVIDIA\\ComputeCache"
+            ]
+        },
+        "misc": {
+            "Prefetch": [
+                "C:\\Windows\\prefetch"
+            ]
+        }
+    }
