@@ -51,6 +51,7 @@ class Optimiser:
         for path, values in powerReg.items():
             for valueName, type, value in values:
                 self.add_reg(valueName, path, type, value)
+                yield (path, valueName, value)
         return
         
     def memory_optimisation(self):
@@ -63,5 +64,4 @@ class Optimiser:
         for path, values in memReg.items():
             for valueName, type, value in values:
                 self.add_reg(valueName, path, type, value)
-            
-        print("Optimised memory")
+                yield (path, valueName, value)

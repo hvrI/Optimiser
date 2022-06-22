@@ -10,13 +10,22 @@ class Example(tk.Frame):
         #self.text.configure(yscrollcommand=self.vsb.set)
         #self.vsb.pack(side="right", fill="y")
         self.text.pack(side="left", fill="both", expand=True)
-        self.text.configure(state='disabled')
+        
 
         self.add_timestamp()
+        
+    def deco(func):
+        def inner(self):
+            self.text.configure(state='normal')
+            func(self)
+            self.text.see("end")
+            self.text.configure(state='disabled')
+        return inner
 
+    @deco
     def add_timestamp(self):
         self.text.insert("end", time.ctime() + "\n")
-        self.text.see("end")
+        #self.text.see("end")
         self.after(1000, self.add_timestamp)
 
 if __name__ == "__main__":

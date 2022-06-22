@@ -105,15 +105,15 @@ memReg = {
 powerReg = {
     # Optimise power management
     r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
-        ("ValueMax", "Reg_DWORD", "64"),
+        ("ValueMax", "Reg_DWORD", "100"),
         ("ValueMin", "Reg_DWORD", "0")
     ),
     r"HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
-        ("ValueMax", "Reg_DWORD", "64"),
+        ("ValueMax", "Reg_DWORD", "100"),
         ("ValueMin", "Reg_DWORD", "0")
     ),
     r"HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
-        ("ValueMax", "Reg_DWORD", "64"),
+        ("ValueMax", "Reg_DWORD", "100"),
         ("ValueMin", "Reg_DWORD", "0")
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\Power" : (
@@ -126,9 +126,9 @@ powerReg = {
         ("PowerThrottlingOff", "Reg_DWORD", "1"),
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c" : (
-        ("ValueMax", "Reg_DWORD", "64"),
+        ("ValueMax", "Reg_DWORD", "100"),
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c\DefaultPowerSchemeValues\8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" : (
-        ("ValueMax", "Reg_DWORD", "64"),
+        ("ValueMax", "Reg_DWORD", "100"),
     ),
 }
