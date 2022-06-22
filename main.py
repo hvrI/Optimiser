@@ -1,5 +1,6 @@
 from optimise import *
 from tkinter import *
+from tkinter import ttk
 
 class GUI(Frame):
     def __init__(self, app):
@@ -8,13 +9,14 @@ class GUI(Frame):
         self.op = Optimiser()
         
         self.text = Text(self, state='disabled', height=2, width=30)
-        self.text.pack(side="left", fill="both", expand=True)
         self.vsb = Scrollbar(self, orient="vertical", command=self.text.yview)
         self.text.configure(yscrollcommand=self.vsb.set)
-        self.vsb.pack(side="right", fill="y")
         
         self.button1 = Button(self, text="Power Optimisation", command=self.powerOptimisation)
         self.button2 = Button(self, text="Memory Optimisation", command=self.memoryOptimisation)
+        
+        self.vsb.pack(side="right", fill="y")
+        self.text.pack(side="right", fill="both", expand=True)
         self.button1.pack()
         self.button2.pack()
         
