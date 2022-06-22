@@ -14,7 +14,8 @@ class GUI(Frame):
         self.button1 = Button(self, text="Powerplan", command=self.addPowerplan)
         self.button2 = Button(self, text="Power Optimisation", command=self.powerOptimisation)
         self.button3 = Button(self, text="Memory Optimisation", command=self.memoryOptimisation)
-        self.button4 = Button(self, text="Clear Logs", command=self.clearText)
+        self.button4 = Button(self, text="Debloat", command=self.fullDebloating)
+        self.button5 = Button(self, text="Clear Logs", command=self.clearText)
         
         self.vsb.pack(side="right", fill="y")
         self.text.pack(side="right", fill="both", expand=True)
@@ -22,6 +23,7 @@ class GUI(Frame):
         self.button2.pack()
         self.button3.pack()
         self.button4.pack()
+        self.button5.pack()
         
     def deco(func):
         def inner(self):
@@ -42,17 +44,24 @@ class GUI(Frame):
     @deco
     def powerOptimisation(self):
         results = self.op.power_optimisation()
-        for path, valueName, value in results:
-            text = f"{path}\nAdded {valueName} - {value}\n\n"
+        for path, valueName, value, rcode in results:
+            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
             self.text.insert("end", text)
         return
     
     @deco
     def memoryOptimisation(self):
         results = self.op.memory_optimisation()
-        for path, valueName, value in results:
-            text = f"{path}\nAdded {valueName} - {value}\n\n"
-
+        for path, valueName, value, rcode in results:
+            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
+            self.text.insert("end", text)
+        return
+    
+    @deco
+    def fullDebloating(self):
+        results = self.op.debloat()
+        for path, valueName, value, rcode in results:
+            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
             self.text.insert("end", text)
         return
 

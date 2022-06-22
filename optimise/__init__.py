@@ -50,8 +50,8 @@ class Optimiser:
     def power_optimisation(self):
         for path, values in powerReg.items():
             for valueName, type, value in values:
-                self.add_reg(valueName, path, type, value)
-                yield (path, valueName, value)
+                rcode = self.add_reg(valueName, path, type, value).returncode
+                yield (path, valueName, value, rcode)
         return
         
     def memory_optimisation(self):
@@ -63,5 +63,11 @@ class Optimiser:
         # Memory Optimisation through Registry
         for path, values in memReg.items():
             for valueName, type, value in values:
-                self.add_reg(valueName, path, type, value)
-                yield (path, valueName, value)
+                rcode = self.add_reg(valueName, path, type, value).returncode
+                yield (path, valueName, value, rcode)
+                
+    def debloat(self):
+        for path, values in debloatReg.items():
+            for valueName, type, value in values:
+                rcode = self.add_reg(valueName, path, type, value).returncode
+                yield (path, valueName, value, rcode)

@@ -149,7 +149,7 @@ debloatReg = {
         ("DiagnosticLinkText", "REG_SZ", "")
     ),
     r"HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" : (
-        ("EnabledV9", "REG_DWORD", ""),
+        ("EnabledV9", "REG_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" : (
         ("PreventHandwritingDataSharing", "REG_DWORD", "1"),
