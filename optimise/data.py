@@ -324,4 +324,64 @@ debloatReg = {
     r"HKCU\Software\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" : (
         ("SensorPermissionState", "REG_DWORD", "0"),
     ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" : (
+        ("AllowTelemetry", "REG_DWORD", "0"),
+        ("DoNotShowFeedbackNotifications", "REG_DWORD", "1")
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" : (
+        ("AllowTelemetry", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" : (
+        ("DODownloadMode", "REG_DWORD", "0"),
+    ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" : (
+        ("SystemSettingsDownloadMode", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Speech" : (
+        ("AllowSpeechModelUpdate", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" : (
+        ("DeferUpgrade", "REG_DWORD", "1"),
+        ("DeferUpgradePeriod", "REG_DWORD", "1"),
+        ("DeferUpdatePeriod", "REG_DWORD", "0")
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" : (
+        ("PreventDeviceMetadataFromNetwork", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsStore\WindowsUpdate" : (
+        ("AutoDownload", "REG_DWORD", "2"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" : (
+        ("NoAutoUpdate", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SYSTEM\CurrentControlSet\Services\wuauserv" : (
+        ("Start", "REG_DWORD", "3"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Services\7971f918-a847-4430-9279-4a52d1efe18d" : (
+        ("RegisteredWithAU", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\OneDrive" : (
+        ("PreventNetworkTrafficPreUserSignIn", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" : (
+        ("SpyNetReporting", "REG_DWORD", "0"),
+        ("SubmitSamplesConsent", "REG_DWORD", "2")
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\MRT" : (
+        ("DontReportInfectionInformation", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" : (
+        ("DisableAntiSpyware", "REG_DWORD", "1"),
+    ),
+    r"HKCU\Software\Microsoft\Siuf\Rules" : (
+        ("NumberOfSIUFInPeriod", "REG_DWORD", "0"),
+        ("PeriodInNanoSeconds", "REG_DWORD", "0")
+    ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Search" : (
+        ("BingSearchEnabled", "REG_DWORD", "0"),
+    ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" : (
+        ("SilentInstalledAppsEnabled", "REG_DWORD", "0"),
+        ("SoftLandingEnabled", "REG_DWORD", "0")
+    ),
 }
