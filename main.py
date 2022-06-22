@@ -45,7 +45,7 @@ class GUI(Frame):
     def powerOptimisation(self):
         results = self.op.power_optimisation()
         for path, valueName, value, rcode in results:
-            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
+            text = "Something went wrong.\n\n" if rcode else f"{path}\nAdded \"{valueName}\" - \"{value}\"\n\n"
             self.text.insert("end", text)
         return
     
@@ -53,17 +53,21 @@ class GUI(Frame):
     def memoryOptimisation(self):
         results = self.op.memory_optimisation()
         for path, valueName, value, rcode in results:
-            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
+            text = "Something went wrong.\n\n" if rcode else f"{path}\nAdded \"{valueName}\" - \"{value}\"\n\n"
             self.text.insert("end", text)
         return
     
     @deco
     def fullDebloating(self):
         results = self.op.debloat()
-        for path, valueName, value, rcode in results:
-            text = "Something went wrong" if rcode else f"{path}\nAdded {valueName} - {value}\n\n"
-            self.text.insert("end", text)
-        return
+        try:
+            for path, valueName, value, rcode in results:
+                text = "Something went wrong.\n\n" if rcode else f"{path}\nAdded \"{valueName}\" - \"{value}\"\n\n"
+                self.text.insert("end", text)
+        except (ValueError, TypeError):
+            for path, rcode in results:
+                text = "Unable to find the specified registry key or value.\n\n" if rcode else f"Deleted \"{path}\"\n\n"
+                self.text.insert("end", text)
 
 
 if __name__ == "__main__":

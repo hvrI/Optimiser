@@ -48,7 +48,7 @@ class Optimiser:
         ult_perf = [powerplan for powerplan in powerplans if 'Ultimate Performance' in powerplan][-1]
         ult_perf_id = ult_perf[ult_perf.index(': ') + 2 : ult_perf.index('  (')]
         self.call_command(f"powercfg /SETACTIVE {ult_perf_id}")
-        return "Successfully added/activated Ultimate Performance Powerplan"
+        return "Successfully added/activated Ultimate Performance Powerplan."
     
     def power_optimisation(self):
         for path, values in powerReg.items():
@@ -74,3 +74,6 @@ class Optimiser:
             for valueName, type, value in values:
                 rcode = self.add_reg(valueName, path, type, value).returncode
                 yield (path, valueName, value, rcode)
+        for path in delBloatReg:
+            rcode = self.del_reg(path).returncode
+            yield (path, rcode)
