@@ -37,7 +37,7 @@ class GUI(Frame):
         
     @deco
     def addPowerplan(self):
-        return self.text.insert("end", self.op.powerplan())
+        return self.text.insert("end", self.op.powerplan() + '\n\n')
     
     @deco
     def powerOptimisation(self):
