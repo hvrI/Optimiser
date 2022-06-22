@@ -411,7 +411,8 @@ cachePaths = {
         "local": {
             "Spotify": [
                 "\\Spotify\\Data",
-                "\\Spotify\\Browser\\Cache\\Cache_Data"
+                "\\Spotify\\Browser\\Cache\\Cache_Data",
+                "\\Spotify\\Browser\\b28de9e6439b2e08c7a4321b3701d53bf18d0783\\Cache\\Cache_Data"
             ],
             "Packages Cache": [
                 "\\Package Cache"
@@ -421,6 +422,15 @@ cachePaths = {
             ],
             "D3DSCache": [
                 "\\D3DSCache"
+            ],
+            "Chrome": [
+                "\\Google\\Chrome\\User Data\\Default\\Cache\\Cache_Data"
+            ],
+            "Steam": [
+                "\\Steam\\htmlcache\\Cache"
+            ],
+            "Valorant": [
+                "\\VALORANT\\Saved\\webcache\\Cache",
             ]
         },
         "roaming": {
@@ -431,6 +441,13 @@ cachePaths = {
             ],
             "Nvidia": [
                 "\\NVIDIA\\ComputeCache"
+            ],
+            "Code": [
+                "\\Code\\Cache\\Cache_Data"
+            ],
+            "Wps": [
+                "\\kingsoft\\wps\\addons\\data\\win-i386\\cef\\cache\\KWPSBubble\\Cache",
+                "\\kingsoft\\wps\\addons\\data\\win-i386\\cef\\globalcache\\KWPSBubble\\Cache"
             ]
         },
         "misc": {
