@@ -1,4 +1,4 @@
-import os
+import contextlib
 import subprocess
 
 from optimise.data import *
@@ -11,8 +11,9 @@ class Optimiser:
     def call_command(self, command: str, is_reg: bool=False):
         if is_reg:
             command = command.split(' ')
-            command[2] = command[2].replace('^', ' ')
-            command[4] = command[4].replace('^', ' ')
+            with contextlib.suppress(IndexError):
+                command[2] = command[2].replace('^', ' ')
+                command[4] = command[4].replace('^', ' ')
             return subprocess.run(command, stdout=subprocess.DEVNULL)
         return subprocess.run(command.split(' '), stdout=subprocess.DEVNULL)
     
@@ -24,8 +25,10 @@ class Optimiser:
         path = path.replace(' ', '^')
         return self.call_command(f"Reg add {path} /v {valueName} /t {type} /d {value} /f", True)
     
-    def del_reg(self, valueName: str, path: str):
+    def del_reg(self, path: str, valueName: str=None):
         path = path.replace(' ', '^')
+        if valueName is None:
+            return self.call_command(f"Reg delete {path} /f", True)
         return self.call_command(f"Reg delete {path} /v {valueName} /f", True)
     
     def get_powerplans(self):
