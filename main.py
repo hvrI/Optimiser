@@ -1,5 +1,6 @@
 from optimise import *
 from tkinter import *
+import time
 
 class GUI(Frame):
     def __init__(self, app):
