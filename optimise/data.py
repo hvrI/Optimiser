@@ -132,3 +132,62 @@ powerReg = {
         ("ValueMax", "Reg_DWORD", "100"),
     ),
 }
+
+debloatReg = {
+    r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\AutoLogger-Diagtrack-Listener" : (
+        ("Start", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" : (
+        ("DiagnosticErrorText", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings" : (
+        ("DiagnosticErrorText", "REG_SZ", ""),
+        ("DiagnosticLinkText", "REG_SZ", "")
+    ),
+    r"HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter" : (
+        ("EnabledV9", "REG_DWORD", ""),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" : (
+        ("PreventHandwritingDataSharing", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" : (
+        ("PreventHandwritingErrorReports", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" : (
+        ("DisableInventory", "REG_DWORD", "1"),
+        ("DisableUAR", "REG_DWORD", "1")
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization" : (
+        ("NoLockScreenCamera", "REG_DWORD", "1"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" : (
+        ("Enabled", "REG_DWORD", "0"),
+    ),
+    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" : (
+        ("Enabled", "REG_DWORD", "0"),
+    ),
+    r"HKCU\Software\Microsoft\Input\TIPC" : (
+        ("Enabled", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\System" : (
+        ("AllowExperimentation", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Bluetooth" : (
+        ("AllowAdvertising", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\SQMClient\Windows" : (
+        ("CEIPEnable", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Messaging" : (
+        ("AllowMessageSync", "REG_DWORD", "0"),
+    ),
+    r"HKLM\SOFTWARE\Policies\Microsoft\Biometrics" : (
+        ("Enabled", "REG_DWORD", "0"),
+    ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications" : (
+        ("ToastEnabled", "REG_DWORD", "0"),
+    ),
+    r"HKCU\Control Panel\International\User Profile" : (
+        ("HttpAcceptLanguageOptOut", "REG_DWORD", "1"),
+    ),
+}
