@@ -19,7 +19,6 @@ class GUI(Frame):
         self.text.configure(yscrollcommand=self.vsb.set)
         self.text.place(x=150, y=10)
         self.vsb.pack(side="right", fill="y")
-        #self.text.pack(side="right", fill="both", expand=True)
         
         self.button1 = Button(self, text="Powerplan", height=1, width=17, command=self.addPowerplan)
         self.button2 = Button(self, text="Power Optimisation", height=1, width=17, command=self.powerOptimisation)
