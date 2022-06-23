@@ -6,7 +6,5 @@ def get_files_by_type(type: str):
             if file.endswith(f".{type}"):
                 yield os.path.join(root, file)
 
-r = get_files_by_type("log")
-
-for i in r:
+for i in get_files_by_type(".old"):
     print(i)
