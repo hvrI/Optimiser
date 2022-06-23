@@ -1,7 +1,7 @@
 import time
 from optimise import *
 from tkinter import *
-
+from tkinter import messagebox
 
 
 class GUI(Frame):
@@ -110,6 +110,7 @@ class GUI(Frame):
 
     @deco
     def fullCleaner(self):
+        messagebox.showwarning("Warning", "This is going to take a while.")
         for result in self.op.cleaner():
             text = f"Unable to delete {result[0]}\n\n" if result[1] else f"Deleted {result[0]}\n\n"
             self.text.insert("end", text)
