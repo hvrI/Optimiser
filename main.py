@@ -1,13 +1,18 @@
+import time
 from optimise import *
 from tkinter import *
-from tkinter import ttk
+
+
 
 class GUI(Frame):
     def __init__(self, app):
         Frame.__init__(self)
+        file_path = os.path.realpath(__file__)
+        modificationTime = time.strftime('%d/%m/%Y %H:%M:%S', time.localtime(os.path.getatime(file_path)))
+
         self.app = app
         self.app.title("Optimiser 0.0.1")
-        self.app.geometry("800x400")
+        self.app.geometry("800x405")
         self.op = Optimiser()
 
         self.menu = Menu(self.app)
@@ -19,6 +24,8 @@ class GUI(Frame):
         self.text.configure(yscrollcommand=self.vsb.set)
         self.text.place(x=150, y=10)
         self.vsb.pack(side="right", fill="y")
+        
+        self.lastUsedLabel = Label(self, text=f"Last used at: {modificationTime}", font=("Arial", 8)).pack(anchor="w", side="bottom")
         
         self.button1 = Button(self, text="Powerplan", height=1, width=17, command=self.addPowerplan)
         self.button2 = Button(self, text="Power Optimisation", height=1, width=17, command=self.powerOptimisation)
@@ -35,7 +42,6 @@ class GUI(Frame):
         self.button5.place(x=10, y=170)
         self.button6.place(x=10, y=210)
         self.button7.place(x=10, y=250)
-
 
     def deco(func):
         def inner(self):
