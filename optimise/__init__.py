@@ -38,20 +38,35 @@ class Optimiser:
     def get_powerplans(self):
         return [powerplan for powerplan in self.get_output("powercfg /L").splitlines() if "Power Scheme GUID" in powerplan]
 
-    def delete_file(self, folder):
-        if not os.path.isdir(folder):
+    def get_files_by_type(self, type: str):
+        for root, __, files in os.walk("c:/"):
+            for file in files:
+                if file.endswith(f".{type}"):
+                    yield os.path.join(root, file)
+
+    def delete_file(self, folder, is_file=False):
+        if not os.path.isdir(folder) and is_file is False:
             return
-        for filename in os.listdir(folder):
-            file_path = os.path.join(folder, filename)
+        if not is_file:
+            for filename in os.listdir(folder):
+                file_path = os.path.join(folder, filename)
+                try:
+                    if os.path.isfile(file_path) or os.path.islink(file_path):
+                        os.unlink(file_path)
+                    elif os.path.isdir(file_path):
+                        shutil.rmtree(file_path)
+                except Exception:
+                    yield (file_path, 1)
+                else:
+                    yield (file_path, 0)
+        else:
             try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
+                if os.path.isfile(folder) or os.path.islink(folder):
+                    os.unlink(folder)
             except Exception:
-                yield (file_path, 1)
+                yield (folder, 1)
             else:
-                yield (file_path, 0)
+                yield (folder, 0)
     
     def powerplan(self):
         powerplans = self.get_powerplans()
@@ -111,4 +126,12 @@ class Optimiser:
                         folder = self.roaming + path
                         for _path, rcode in self.delete_file(folder):
                             yield (_path, rcode)
-
+            elif data == "misc":
+                for name in app:
+                    for folder in app[name]:
+                        for _path, rcode in self.delete_file(folder):
+                            yield (_path, rcode)
+        
+        for file in self.get_files_by_type("log"):
+            for deleted_file, rcode in self.delete_file(file, True):
+                yield (deleted_file, rcode)

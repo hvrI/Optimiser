@@ -453,6 +453,9 @@ cachePaths = {
         "misc": {
             "Prefetch": [
                 "C:\\Windows\\prefetch"
+            ],
+            "Temp": [
+                "C:\\Windows\\Temp"
             ]
         }
     }
