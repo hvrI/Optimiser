@@ -459,3 +459,22 @@ cachePaths = {
             ]
         }
     }
+
+gameReg = {
+    r"HKCU\SOFTWARE\Microsoft\Games" : (
+        ("FpsAll", "Reg_DWORD", "1"),
+        ("GameFluidity", "Reg_DWORD", "1"),
+        ("FpsStatusGames", "Reg_DWORD", "16"),
+        ("FpsStatusGamesAll", "Reg_DWORD", "4")
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" : (
+        ("Affinity", "Reg_DWORD", "0"),
+        ("Background Only", "Reg_SZ", "False"),
+        ("Clock Rate", "Reg_DWORD", "10000"),
+        ("GPU Priority", "Reg_DWORD", "8"),
+        ("Priority", "Reg_DWORD", "6"),
+        ("Scheduling Category", "Reg_SZ", "High"),
+        ("SFIO Priority", "Reg_SZ", "High"),
+        ("Latency Sensitive", "Reg_SZ", "True"),
+    )
+}

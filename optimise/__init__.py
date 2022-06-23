@@ -135,3 +135,9 @@ class Optimiser:
         for file in self.get_files_by_type("log"):
             for deleted_file, rcode in self.delete_file(file, True):
                 yield (deleted_file, rcode)
+
+    def gameBooster(self):
+        for path, values in gameReg.items():
+            for valueName, type, value in values:
+                rcode = self.add_reg(valueName, path, type, value).returncode
+                yield (path, valueName, value, rcode)
