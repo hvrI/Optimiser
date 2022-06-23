@@ -476,5 +476,15 @@ gameReg = {
         ("Scheduling Category", "Reg_SZ", "High"),
         ("SFIO Priority", "Reg_SZ", "High"),
         ("Latency Sensitive", "Reg_SZ", "True"),
+    ),
+    r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" : (
+        ("Affinity", "Reg_DWORD", "0"),
+        ("Background Only", "Reg_SZ", "False"),
+        ("Clock Rate", "Reg_DWORD", "10000"),
+        ("GPU Priority", "Reg_DWORD", "8"),
+        ("Priority", "Reg_DWORD", "2"),
+        ("Scheduling Category", "Reg_SZ", "High"),
+        ("SFIO Priority", "Reg_SZ", "High"),
+        ("Latency Sensitive", "Reg_SZ", "True"),
     )
 }
