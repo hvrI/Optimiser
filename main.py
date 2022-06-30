@@ -8,7 +8,10 @@ class GUI(Frame):
     def __init__(self, app):
         Frame.__init__(self)
         file_path = os.path.realpath(__file__)
-        modificationTime = time.strftime('%d/%m/%Y %H:%M:%S', time.localtime(os.path.getatime(file_path)))
+        try:
+            modificationTime = time.strftime('%d/%m/%Y %H:%M:%S', time.localtime(os.path.getatime(file_path)))
+        except FileNotFoundError:
+            modificationTime = "None"
 
         self.app = app
         self.app.title("Optimiser 0.0.1")
